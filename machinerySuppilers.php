@@ -173,10 +173,10 @@ needed….</p><br><p style="font-size:16px;" ><b>The following Machinery Suppliers
 							if(isset($_POST['search'])){
 
 $search_term = htmlspecialchars($_POST['search_box']);
+$search_term2 =  htmlspecialchars($_POST['search_box1']);
 
 
-
-$query = "SELECT * FROM company   WHERE code='$search_term' LIMIT $pageNumber,5";
+$query = "SELECT * FROM profile WHERE macsuppost='1' AND  location='$search_term'  OR macsupmachinery='$searchterm2' LIMIT $pageNumber,5";
 
 $checkQuery= mysql_query($query);
 if(mysql_num_rows($checkQuery) <= 0){
@@ -229,7 +229,7 @@ $resultQuery = mysql_query($query);
 							?>
 <center>
         <div class="span12">
-              <form method="get" action="/" class="form-inline" >
+              <form method="get" action="MachinerySuppliers.php" class="form-inline" >
                <input type="text" name="search_box" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  class="form-control input-sm" maxlength="10" placeholder="Enter location" />
             <input type="text" name="search_box1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" class="form-control input-sm" maxlength="10" placeholder="Enter Machinery" />
                <button type="submit"  name="search" style="width:100px;" class="btn btn-default">Search</button>

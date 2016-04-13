@@ -172,14 +172,14 @@ needed….</p><br><p style="font-size:16px;" ><b>The following Contractors are ava
 							if(isset($_POST['search'])){
 
 $search_term = htmlspecialchars($_POST['search_box']);
+$searchterm2 =  htmlspecialchars($_POST['search_box1']);
 
 
-
-$query = "SELECT * FROM profile WHERE subconpost='1' AND  location='$search_term' LIMIT $pageNumber,5";
+$query = "SELECT * FROM profile WHERE subconpost='1' AND  location='$search_term'  OR subconspec='$searchterm2' LIMIT $pageNumber,5";
 
 $checkQuery= mysql_query($query);
 if(mysql_num_rows($checkQuery) <= 0){
-	$noFound= "The entered company code is not found in our records.$sesrch_term";
+	$noFound= "No records to  display";
 }else{
 	$noFound = "";
 }
@@ -228,7 +228,7 @@ $resultQuery = mysql_query($query);
 							?>
 
      <center>   <div class="span12">
-              <form method="get" action="/" class="form-inline" >
+              <form method="POST" action="SubContractors.php" class="form-inline" >
                <input type="text" name="search_box" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  class="form-control input-sm" maxlength="10" placeholder="Enter location" />
             <input type="text" name="search_box1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" class="form-control input-sm" maxlength="10" placeholder="Enter Specialization" />
                <button type="submit"  name="search" style="width:100px;" class="btn btn-default">Search</button>
@@ -327,4 +327,4 @@ $resultQuery = mysql_query($query);
 		</div>
    </footer>
 </body>
-</html>
+</html>                
